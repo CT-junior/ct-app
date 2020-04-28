@@ -9,7 +9,7 @@ Com esse projeto desejamos aperfeiçoar nossa habilidades com o Angular e o Node
 
 |Integrante|E-mail|
 |----------|------|
-|Cecília Guimarães|merson@ctjunior.com.br|
+|Cecília Guimarães|cecilia@ctjunior.com.br|
 |Emerson Laranja|emerson@ctjunior.com.br|
 |Evandro Falcão|evandro@ctjunior.com.br|
 |Tiago Brito|tiago.brito@ctjunior.com.br|
