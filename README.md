@@ -5,7 +5,7 @@ Aplicativo para gerenciamento e controle das informações referente aos membros
 ### :office: Descrição
 Com esse projeto desejamos aperfeiçoar nossa habilidades com o Angular e o Node.js, além de trazer uma aplicação que possa agregar valor à empresa.
 
-###Equipe
+### Equipe
 
 |Integrante|E-mail|
 |----------|------|
