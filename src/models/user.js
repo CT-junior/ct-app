@@ -30,4 +30,4 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', UserSchema); /* Definindo o User  */
 
-module.exports = User;
+module.exports = User;/* Exportando modulo User */
