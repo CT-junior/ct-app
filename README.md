@@ -16,6 +16,7 @@ Com esse projeto desejamos aperfeiçoar nossa habilidades com o Angular e o Node
 
 ## Como Executar
 * Execute `node src/index.js` para executar a versão de desenvolvimento. Depois acesse `http://localhost:3000/`;
+* Para testes de requisição, utilize o programa [Insomnia Core](https://insomnia.rest/download/#windows);
 
 ## Equipe
 
