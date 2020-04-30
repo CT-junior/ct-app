@@ -12,4 +12,6 @@ CTapp.use(bodyParser.urlencoded({ extended: false }));/* Serve para que a aplica
     res.send('AEEEE!');
 }); */
 
+require('./controllers/authController')(CTapp);/* Referenciando o AuthController*/
+
 CTapp.listen(3000);/* Porta do servidor*/

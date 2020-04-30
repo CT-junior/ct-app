@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');/* Definindo e importando o Mongoose */
+const mongoose = require('../database');/* Definindo e importando o Mongoose */
 
 
 /* Definindo o Schema: campos do Banco de Dados */

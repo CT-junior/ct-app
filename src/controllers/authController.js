@@ -13,5 +13,6 @@ router.post('/register', async (req, res) => {
     } catch (err) {
         return res.status(400).send({error: 'Falha no Registro!'});
     }
-
 });
+
+module.exports = CTapp => CTapp.use('/auth', router);/* todas as rotas adefinidas acima serão prefixadas com o /auth */
