@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/CT-junior/ct-app/issues"
   },
-  "homepage": "https://github.com/CT-junior/ct-app#readme"
+  "homepage": "https://github.com/CT-junior/ct-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
