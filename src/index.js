@@ -8,8 +8,8 @@ CTapp.use(bodyParser.json());/* Serve para que a aplicação entenda as requisi�
 CTapp.use(bodyParser.urlencoded({ extended: false }));/* Serve para que a aplicação entenda os parametros em URL*/
 
 /* Teste para ver se a aplicação está funcionando */
-CTapp.get('/', (req, res) => {
+/* CTapp.get('/', (req, res) => {
     res.send('AEEEE!');
-});
+}); */
 
 CTapp.listen(3000);/* Porta do servidor*/
