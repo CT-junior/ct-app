@@ -6,7 +6,7 @@ Aplicativo para gerenciamento e controle das informações referente aos membros
 Com esse projeto desejamos aperfeiçoar nossa habilidades com o Angular e o Node.js, além de trazer uma aplicação que possa agregar valor à empresa.
 
 ## Tecnologias
-* Angular CLI: 9.1.4;
+* Angular CLI 9.1.4;
 * Node.js 12.16.2;
 
 
