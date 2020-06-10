@@ -1,80 +1,89 @@
-<form class="p-4" [formGroup]="cadastro">
+<div class="container">
+    <form class="p-4" [formGroup]="cadastro">
 
-    <div class="row">
-        <div class="form-group col-md-6">
-            <label for="nome">Nome:*</label>
-            <input type="text" class="form-control shadow rounded" id="nome" placeholder="Nome" formControlName="nome"
-                [ngClass]="aplicaCss('nome')">
-            <div class="invalid-feedback">Nome é
-                obrigatório!</div>
-        </div>
-
-        <div class="form-group col-md-6">
-            <label for="email">Email:*</label>
-            <input type="text" class="form-control shadow rounde" id="email" placeholder="nome@email.com"
-                formControlName="email" [ngClass]="aplicaCss('email')">
-            <div class="invalid-feedback">Email é
-                obrigatório!</div>
-        </div>
-
-        <div class="form-group col-md-3">
-            <label for="celular">Celular:*</label>
-            <input type="text" class="form-control shadow rounde" id="celular" placeholder="Celular"
-                formControlName="celular" [ngClass]="aplicaCss('celular')" mask="(00) 0 0000-0000">
-
-            <div class="invalid-feedback">Celular é
-                obrigatório!</div>
-        </div>
-
-        <div class="form-group col-md-3">
-            <label for="data">Data de Nascimento:*</label>
-            <input type="text" class="form-control shadow rounde" id="data" placeholder="Data de Nascimento"
-                formControlName="data" type="date" [ngClass]="aplicaCss('data')">
-            <div class="invalid-feedback">Data de nascimento é
-                obrigatório!</div>
-        </div>
-
-        <div class="form-group col-md-3">
-            <div>
-                <label for="cargo">Cargo:*</label>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="nome">Nome:*</label>
+                <input type="text" class="form-control shadow rounded" id="nome" placeholder="Nome"
+                    formControlName="nome" [ngClass]="aplicaCss('nome')">
+                <div class="invalid-feedback">Nome é
+                    obrigatório!</div>
             </div>
 
-            <div class="custom-control custom-radio custom-control-inline" *ngFor="let cargo of cargos">
-                <input type="radio" name="cargo" value="{{cargo}}" id="{{cargo}}" (change)="radioCargo($event)"
-                    formControlName="cargo" class="custom-control-input" [ngClass]="aplicaCss('cargo')">
-                <label class="custom-control-label" for="{{cargo}}">{{ cargo }}</label>
+            <div class="form-group col-md-6">
+                <label for="email">Email:*</label>
+                <input type="text" class="form-control shadow rounde" id="email" placeholder="nome@ctjunior.com.br"
+                    formControlName="email" [ngClass]="aplicaCss('email')">
+                <div class="invalid-feedback">Email é
+                    obrigatório!</div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="phone">Celular:*</label>
+                <input type="text" class="form-control shadow rounde" id="phone" placeholder="Celular"
+                    formControlName="phone" [ngClass]="aplicaCss('phone')" mask="(00) 0 0000-0000">
+
+                <div class="invalid-feedback">Celular é
+                    obrigatório!</div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="birthdate">Data de Nascimento:*</label>
+                <input type="text" class="form-control shadow rounde" id="birthdate" placeholder="Data de Nascimento"
+                    formControlName="birthdate" type="date" [ngClass]="aplicaCss('birthdate')">
+                <div class="invalid-feedback">Data de nascimento é
+                    obrigatório!</div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <div>
+                    <label for="role">Cargo:*</label>
+                </div>
+
+                <div class="custom-control custom-radio custom-control-inline" *ngFor="let cargo of cargos">
+                    <input type="radio" name="role" value="{{cargo}}" id="{{cargo}}" (change)="radioCargo($event)"
+                        formControlName="role" class="custom-control-input" [ngClass]="aplicaCss('role')">
+                    <label class="custom-control-label" for="{{cargo}}">{{ cargo }}</label>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <div>
+                    <label for="team">Diretoria:*</label>
+                </div>
+
+                <div class="custom-control custom-radio custom-control-inline" *ngFor="let diretoria of diretorias">
+                    <input type="radio" name="team" value="{{diretoria}}" id="{{diretoria}}"
+                        (change)="radioDiretoria($event)" formControlName="team" class="custom-control-input"
+                        [ngClass]="aplicaCss('team')">
+                    <label class="custom-control-label" for="{{diretoria}}">{{ diretoria }}</label>
+                </div>
             </div>
         </div>
 
-        <div class="form-group col-md-3">
-            <div>
-                <label for="diretoria">Diretoria:*</label>
-            </div>
-
-            <div class="custom-control custom-radio custom-control-inline" *ngFor="let diretoria of diretorias">
-                <input type="radio" name="diretoria" value="{{diretoria}}" id="{{diretoria}}"
-                    (change)="radioDiretoria($event)" formControlName="diretoria" class="custom-control-input"
-                    [ngClass]="aplicaCss('diretoria')">
-                <label class="custom-control-label" for="{{diretoria}}">{{ diretoria }}</label>
+        <div class="form-group">
+            <label for="password">Senha:*</label>
+            <div class="input-group">
+                <input [type]="tipo ? 'text' : 'password'" class="form-control shadow rounde" id="password" placeholder="Senha"
+                    formControlName="password" [ngClass]="aplicaCss('password')">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="showHide()">
+                        <img [src]="tipo ? '../../assets/icons/eye-fill.svg' : '../../assets/icons/eye-slash-fill.svg'" alt="">
+                    </button>
+                </span>
+                <div class="invalid-feedback">Senha é
+                    obrigatório!</div>
             </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label for="senha">Senha:*</label>
-        <input type="password" class="form-control shadow rounde" id="senha" placeholder="Senha"
-            formControlName="senha">
-        <div class="invalid-feedback">Senha é
-            obrigatório!</div>
-    </div>
+        <!--  <div class="form-group">
+            <label for="foto">Imagem</label>
+            <textarea type="text" class="form-control shadow rounde" id="foto" placeholder="Foto"
+                formControlName="foto"></textarea>
+            <div class="invalid-feedback">Mensagem é
+                obrigatório!</div>
+        </div> -->
 
-   <!--  <div class="form-group">
-        <label for="foto">Mensagem</label>
-        <textarea type="text" class="form-control shadow rounde" id="foto" placeholder="Foto"
-            formControlName="foto"></textarea>
-        <div class="invalid-feedback">Mensagem é
-            obrigatório!</div>
-    </div> -->
-
-    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
-</form>
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+    </form>
+</div>

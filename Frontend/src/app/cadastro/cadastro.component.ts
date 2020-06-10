@@ -9,9 +9,11 @@ import { AlertModalService } from '../alert-modal/alert-modal.service';
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css']
 })
+
 export class CadastroComponent implements OnInit {
 
   cadastro: FormGroup;
+  tipo: boolean
 
   onSubmit() {
     console.log(this.cadastro.value);
@@ -59,13 +61,13 @@ export class CadastroComponent implements OnInit {
   ngOnInit() {
     this.cadastro = this.fb.group({
       nome: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-      email: [null, [Validators.required, Validators.email, Validators.minLength(2), Validators.maxLength(50)]],
-      celular: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(11)]],
-      data: [null, Validators.required],
-      cargo: [null, Validators.required, this.selectedCargo],
-      diretoria: [null, Validators.required, this.selectedDiretoria],
-      senha: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(250)]],
-      /* foto: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(250)]] */
+      email: [null, [Validators.required, Validators.pattern("^[a-z0-9.]+@ctjunior.com.br"), Validators.minLength(2), Validators.maxLength(50)]],
+      phone: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(11)]],
+      role: [null, Validators.required, this.selectedCargo],
+      team: [null, Validators.required, this.selectedDiretoria],
+      birthdate: [null, Validators.required],
+      password: [null, Validators.required]
+      /* foto: [null, Validators.required] */
     })
   }
 
@@ -73,10 +75,10 @@ export class CadastroComponent implements OnInit {
   selectedCargo: string = '';
 
   cargos: any = [
-    'Diretor(a)', 'Gerente', 'Consultor'
+    'Diretor(a)', 'Gerente', 'Consultor(a)'
   ];
   diretorias: any = [
-    'Consultoria', 'Construção Civil', 'Tecnologia'
+    'Consultoria', 'Civil', 'Tecnologia'
   ];
 
 
@@ -87,5 +89,7 @@ export class CadastroComponent implements OnInit {
     this.selectedDiretoria = event.target.value;
   };
 
-
+  showHide() {
+    this.tipo = !this.tipo;
+  }
 }

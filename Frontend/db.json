@@ -1,4 +1,14 @@
 {
   "cadastro": [
+    {
+      "nome": "teste",
+      "email": "evandro.della@gmail.com",
+      "phone": "27981021394",
+      "role": "Gerente",
+      "team": "Tecnologia",
+      "birthdate": "2020-06-25",
+      "password": "Teste",
+      "id": 1
+    }
   ]
 }
