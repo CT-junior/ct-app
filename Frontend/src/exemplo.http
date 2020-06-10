@@ -1,0 +1,27 @@
+http://localhost:3000/cadastro
+
+###
+
+GET  http://localhost:3000/cadastro/1
+
+###
+
+POST  http://localhost:3000/cadastro HTTP/1.1
+content-type: application/json
+
+{
+    "nome": "teste"
+}
+
+###
+
+PUT http://localhost:3000/cadastro/FHBVSLh HTTP/1.1
+content-type: application/json
+
+{
+    "nome": "teste OO"
+}
+
+###
+
+DELETE http://localhost:3000/cadastro/FHBVSLh
