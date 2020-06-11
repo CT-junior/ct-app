@@ -1,0 +1,11 @@
+
+    <div class="form-group">
+        <label for="nome">Email address</label>
+        <input [(ngModel)]="usuario.nome" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+        <label for="senha">Password</label>
+        <input [(ngModel)]="usuario.senha" type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="fazerLogin()">Submit</button>
