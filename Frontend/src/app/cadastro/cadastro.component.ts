@@ -13,7 +13,7 @@ import { AlertModalService } from '../alert-modal/alert-modal.service';
 export class CadastroComponent implements OnInit {
 
   cadastro: FormGroup;
-  tipo: boolean
+  tipo: boolean;
 
   onSubmit() {
     console.log(this.cadastro.value);
