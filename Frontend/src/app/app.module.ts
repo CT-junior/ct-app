@@ -8,10 +8,10 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AlertModalComponent } from './alert-modal/alert-modal.component';
 import { AuthService } from './login/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxMaskModule } from 'ngx-mask';
-
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { NgxMaskModule } from 'ngx-mask';
     NgxMaskModule.forRoot(),
     FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
