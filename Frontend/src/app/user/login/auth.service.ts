@@ -26,7 +26,7 @@ export class AuthService {
     if (login.email === 'evandro@ctjunior.com.br' && login.password === '123'){
       this.usuarioAutenticado = true;
       this.mostrarMenuEmitter.emit(true);
-      this.router.navigate(['/Dashboard'])
+      this.router.navigate(['/Dashboard']);
     } else {
       this.usuarioAutenticado = false;
       this.mostrarMenuEmitter.emit(false);

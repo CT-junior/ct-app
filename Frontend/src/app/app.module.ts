@@ -3,21 +3,25 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AlertModalComponent } from './alert-modal/alert-modal.component';
-import { AuthService } from './login/auth.service';
+import { UserComponent } from './user/user.component';
+import { AuthService } from './user/login/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxMaskModule } from 'ngx-mask';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    AlertModalComponent
+    AlertModalComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,8 @@ import { NgxMaskModule } from 'ngx-mask';
     HttpClientModule,
     ModalModule.forRoot(),
     NgxMaskModule.forRoot(),
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

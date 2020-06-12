@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { CadastroService } from './cadastro.service';
-import { AlertModalService } from '../alert-modal/alert-modal.service';
+import { AlertModalService } from '../../alert-modal/alert-modal.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -22,8 +23,9 @@ export class CadastroComponent implements OnInit {
       this.service.create(this.cadastro.value).subscribe(
         success => {
           console.log('sucesso');
-          this.alertService.showAlertSuccess('Cadastro realizado com sucesso!');
           this.cadastro.reset();
+          this.router.navigate(['/Login'])
+          this.alertService.showAlertSuccess('Cadastro realizado com sucesso!');
         },
         error => console.error(error),
         () => console.log('request completo')
@@ -54,7 +56,8 @@ export class CadastroComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: CadastroService,
-    private alertService: AlertModalService
+    private alertService: AlertModalService,
+    private router: Router
   ) { }
 
 
@@ -78,7 +81,7 @@ export class CadastroComponent implements OnInit {
     'Diretor(a)', 'Gerente', 'Consultor(a)'
   ];
   diretorias: any = [
-    'Consultoria', 'Civil', 'Tecnologia'
+    'Consultoria', 'Construção Civil', 'Tecnologia'
   ];
 
 

@@ -1,5 +1,5 @@
 <div class="container">
-    <form class="p-4" [formGroup]="cadastro">
+    <form [formGroup]="cadastro">
 
         <div class="row">
             <div class="form-group col-md-6">
@@ -84,6 +84,6 @@
                 obrigatório!</div>
         </div> -->
 
-        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+        <button type="submit" class="btn btn-outline-secondary" (click)="onSubmit()">Cadastrar</button>
     </form>
 </div>

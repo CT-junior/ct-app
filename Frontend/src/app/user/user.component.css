@@ -1,0 +1,49 @@
+/* ---------------- User ----------------  */
+.img {
+    width: 100%;
+    height: auto;
+    
+    padding-bottom: 25vh;
+    background-image: url(/assets/images/user/textura.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.sign {
+    border: 0;
+    border-radius: 0;
+    border-radius: 20px 20px 0 0;
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.sign:hover {
+    background-color: #dcdcdc;
+    color: #000;
+}
+
+.login {
+    height: 50vh;
+}
+
+.card {
+    border-radius: 20px;
+}
+
+.card-body{
+    background-color: #dcdcdc;
+    border-radius: 0 0 20px 20px;
+}
+
+.logo {
+    height: 25vh;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 574px) {
+    .container {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
