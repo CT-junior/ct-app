@@ -2,43 +2,23 @@
   "cadastro": [
     {
       "nome": "teste",
-      "email": "evandro.della@gmail.com",
-      "phone": "27981021394",
-      "role": "Gerente",
-      "team": "Tecnologia",
-      "birthdate": "2020-06-25",
-      "password": "Teste",
-      "id": 1
-    },
-    {
-      "nome": "Evandro Falcão Della Valentina de Oliveira",
-      "email": "evandroteste@ctjunior.com.br",
-      "phone": "27999999999",
-      "role": "Gerente",
-      "team": "Tecnologia",
-      "birthdate": "2000-02-24",
-      "password": "1234",
-      "id": 2
-    },
-    {
-      "nome": "teste",
-      "email": "evandro@ctjunior.com.br",
-      "phone": "27981021394",
-      "role": "Gerente",
-      "team": "Tecnologia",
-      "birthdate": "2020-06-10",
-      "password": "123",
-      "id": 3
-    },
-    {
-      "nome": "teste",
       "email": "evandro@ctjunior.com.br",
       "phone": "27981021394",
       "role": "Consultor(a)",
-      "team": "Tecnologia",
-      "birthdate": "2020-06-02",
-      "password": "l",
-      "id": 4
+      "team": "Consultoria",
+      "birthdate": "2020-06-06",
+      "password": "123",
+      "id": 1
+    },
+    {
+      "nome": "evankm",
+      "email": "evandro2@ctjunior.com.br",
+      "phone": "27981021394",
+      "role": "Gerente",
+      "team": "Construção Civil",
+      "birthdate": "2020-06-04",
+      "password": "123456",
+      "id": 2
     }
   ]
 }

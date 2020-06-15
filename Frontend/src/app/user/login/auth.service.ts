@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { AlertModalService } from 'src/app/alert-modal/alert-modal.service';
 
 import { User } from './user';
 import { EventEmitter } from '@angular/core';
@@ -11,17 +11,15 @@ import { EventEmitter } from '@angular/core';
 
 export class AuthService {
 
-  private readonly API = 'http://localhost:3000/cadastro';
-
   private usuarioAutenticado: boolean = false;
 
   mostrarMenuEmitter = new EventEmitter<boolean>();
 
   constructor(
     private router: Router,
-    private http: HttpClient
-    ) { }
-
+    private alertService: AlertModalService
+  ) { }
+  
   fazerLogin(login: User) {
     if (login.email === 'evandro@ctjunior.com.br' && login.password === '123'){
       this.usuarioAutenticado = true;
@@ -30,10 +28,11 @@ export class AuthService {
     } else {
       this.usuarioAutenticado = false;
       this.mostrarMenuEmitter.emit(false);
+      this.alertService.showAlertDanger('Campo Usuario ou Senha: Inválido.');
     }
   }
 
-  usuarioEstaAutenticado(){
+  usuarioEstaAutenticado() {
     return this.usuarioAutenticado;
   }
 

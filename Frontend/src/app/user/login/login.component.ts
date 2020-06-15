@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   fazerLogin() {
     if (this.login.valid) {
       this.authService.fazerLogin(this.login.value);
+      this.login.reset();
     } else {
       Object.keys(this.login.controls).forEach(campo => {
         const controle = this.login.get(campo);
