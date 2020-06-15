@@ -15,6 +15,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxMaskModule } from 'ngx-mask';
 
+import { SidebarModule } from 'ng-sidebar';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NgxMaskModule } from 'ngx-mask';
     ModalModule.forRoot(),
     NgxMaskModule.forRoot(),
     FormsModule,
-    CommonModule
+    CommonModule,
+    SidebarModule.forRoot()
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

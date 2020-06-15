@@ -2,7 +2,7 @@
 
 <form [formGroup]="login">
     <div class="row justify-content-center">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6 px-2">
             <label for="email">Email:*</label>
             <input type="text" class="form-control shadow rounde" id="email" placeholder="nome@ctjunior.com.br"
                 formControlName="email" [ngClass]="aplicaCss('email')">
@@ -12,7 +12,7 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6 px-2">
             <label for="password">Senha:*</label>
             <div class="input-group">
                 <input [type]="tipo ? 'text' : 'password'" class="form-control shadow rounde" id="password"
@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <div class="row justify-content-center px-4">
+    <div class="row justify-content-center px-2">
         <button type="button" class="btn btn-outline-secondary col-md-6" (click)="fazerLogin()">Entrar</button>
     </div>
 

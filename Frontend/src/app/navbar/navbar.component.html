@@ -1,16 +1,30 @@
-<nav>
-    <ul class="nav justify-content-end" style="background-color: black;">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Ativo</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Desativado</a>
-        </li>
-    </ul>
-</nav>
+<div class="teste">
+    <nav class="navbar navbar-light bg-light shadow rounde fixed-top">
+        <div>
+            <button type="button" class="navbar-toggler" (click)="toggleSidebar()">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <a class="navbar-brand px-4">CT Junior</a>
+        </div>
+
+
+        <button class="btn btn-outline-light" type="button">Logout</button>
+    </nav>
+
+    <ng-sidebar-container>
+
+        <!-- A sidebar -->
+        <ng-sidebar [(opened)]="opened" position="left">
+            <div class="sidebar-itens pt-4">
+                <button type="button" class="btn sidebar-item">Dashboard</button>
+                <button type="button" class="btn sidebar-item">Login</button>
+                <button type="button" class="btn sidebar-item">Cadastro</button>
+                <button type="button" class="btn sidebar-item">Teste</button>
+                <button type="button" class="btn sidebar-item">Teste</button>
+                <button type="button" class="btn sidebar-item">Teste</button>
+                <button type="button" class="btn sidebar-item">Teste</button>
+            </div>
+        </ng-sidebar>
+    </ng-sidebar-container>
+</div>

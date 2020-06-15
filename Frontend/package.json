@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~9.1.4",
     "@angular/router": "~9.1.4",
     "bootstrap": "^4.5.0",
+    "ng-sidebar": "^9.3.0",
     "ngx-bootstrap": "^5.6.1",
     "ngx-mask": "^9.1.2",
     "rxjs": "~6.5.4",
