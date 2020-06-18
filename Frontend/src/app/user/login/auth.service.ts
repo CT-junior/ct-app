@@ -77,10 +77,12 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    return !this.getJwtToken();
+    this.mostrarMenuEmitter.emit(false);
+    return this.getJwtToken(), this.usuarioAutenticado;
   }
 
   getJwtToken() {
+    this.mostrarMenuEmitter.emit(true);
     return localStorage.getItem(this.JWT_TOKEN);
   }
 
