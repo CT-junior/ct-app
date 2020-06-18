@@ -15,7 +15,7 @@ Este projeto foi criado com o [Angular CLI](https://github.com/angular/angular-c
 * Dentro do diretório `Frontend`, instale as dependências usando `npm install`;
 
 ## Como Executar
-* Execute `ng serve` para executar a versão de desenvolvimento. Depois acesse `http://localhost:4200/`;
+* Execute `npm run start` para executar a versão de desenvolvimento. Depois acesse `http://localhost:4200/`;
 
 ## Como compilar/construir
 * Execute `ng build` para buildar o projeto. Para buildar a versão de produção adicione a flag `--prod`. Os arquivos serão armazenados do diretório `dist/`;

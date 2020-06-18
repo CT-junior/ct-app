@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
 import { User } from './user';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AlertModalService } from 'src/app/alert-modal/alert-modal.service';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +15,15 @@ export class LoginComponent implements OnInit {
 
   login: FormGroup;
   tipo: boolean;
-  
+
   usuario: User = new User();
 
   constructor(
     private authService: AuthService,
-    private fb: FormBuilder
-    ) { }
+    private fb: FormBuilder,
+    private router: Router,
+    private alertService: AlertModalService
+  ) { }
 
   ngOnInit() {
     this.login = this.fb.group({
@@ -28,11 +32,44 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  /* fazerLogin() {
+    if (this.login.valid) {
+      this.authService.fazerLogin(this.login.value).subscribe(
+        success => {
+          if (success) {
+            this.router.navigate(['/Dashboard']);
+            this.login.reset();
+            this.alertService.showAlertSuccess('Login realizado com sucesso!');
+          } else {
+            this.login.reset();
+          }
+        },
+        error => console.error(error),
+        () => console.log('request completo')
+      );
+    } else {
+      Object.keys(this.login.controls).forEach(campo => {
+        const controle = this.login.get(campo);
+        controle.markAsTouched();
+      })
+    }
+  } */
+
+
   fazerLogin() {
     if (this.login.valid) {
-      this.authService.fazerLogin(this.login.value);
-      this.login.reset();
+      this.authService.fazerLogin(this.login.value).subscribe(
+        success => {
+          if (success) {
+            this.router.navigate(['/Dashboard']);
+            console.log(success);
+            this.login.reset();
+            this.alertService.showAlertSuccess('Login realizado com sucesso!');
+          }
+        })
     } else {
+      this.login.reset();
+      this.alertService.showAlertSuccess('Campo Usuario ou Senha: Inválido!');
       Object.keys(this.login.controls).forEach(campo => {
         const controle = this.login.get(campo);
         controle.markAsTouched();

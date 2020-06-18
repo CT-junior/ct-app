@@ -63,7 +63,7 @@ export class CadastroComponent implements OnInit {
 
   ngOnInit() {
     this.cadastro = this.fb.group({
-      nome: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
+      name: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
       email: [null, [Validators.required, Validators.pattern("^[a-z0-9.]+@ctjunior.com.br"), Validators.minLength(2), Validators.maxLength(50)]],
       phone: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(11)]],
       role: [null, Validators.required, this.selectedCargo],

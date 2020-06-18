@@ -1,7 +1,7 @@
 /* ---------------- User ----------------  */
 .img {
     width: 100%;
-    height: auto;
+    height: 100vh;
     
     padding-bottom: 25vh;
     background-image: url(/assets/images/user/textura.jpg);
@@ -37,10 +37,17 @@
 }
 
 .logo {
-    height: 25vh;
+    width: 20vw;
 }
 
 /* ---------------- Responsive ---------------- */
+@media (max-width: 1000px) {
+    .logo {
+        height: 15vh;
+        width: auto;
+    }
+}
+
 @media (max-width: 574px) {
     .container {
         padding-left: 50px;

@@ -6,7 +6,7 @@ import { take } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CadastroService {
-  private readonly API = 'http://localhost:3000/cadastro';
+  private readonly API = '/api/register';
 
   constructor(private http: HttpClient) {}
 

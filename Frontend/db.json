@@ -19,6 +19,20 @@
       "birthdate": "2020-06-04",
       "password": "123456",
       "id": 2
+    },
+    {
+      "nome": "teste",
+      "email": "evandro@ctjunior.com.br",
+      "phone": "25252120511",
+      "role": "Consultor(a)",
+      "team": "Construção Civil",
+      "birthdate": "2020-06-19",
+      "password": "1652",
+      "id": 3
+    },
+    {
+      "nome": "teste",
+      "id": 4
     }
   ]
 }
