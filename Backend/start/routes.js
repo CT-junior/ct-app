@@ -1,5 +1,7 @@
 "use strict";
 
+const AddressController = require("../app/Controllers/Http/AddressController");
+
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -13,10 +15,11 @@
 |
 */
 
-/** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use("Route");
 
 Route.post("/register", "AuthController.register");
 Route.post("/authenticate", "AuthController.authenticate");
+
+Route.post("/addresses/:user_id", "AddressController.store");
 
 Route.get("/app", "UserController.index").middleware(["auth"]);

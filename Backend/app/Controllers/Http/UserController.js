@@ -5,17 +5,17 @@ class UserController {
     return "Hello World";
   }
 
-  async store({ request, response }) {
-    const {
-      name,
-      email,
-      phone,
-      role,
-      team,
-      birthdate,
-      password,
-    } = request.body;
-  }
+  //   async store({ request, _ }) {
+  //     const {
+  //       name,
+  //       email,
+  //       phone,
+  //       role,
+  //       team,
+  //       birthdate,
+  //       password,
+  //     } = request.body;
+  //   }
 }
 
 module.exports = UserController;

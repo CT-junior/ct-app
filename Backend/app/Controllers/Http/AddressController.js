@@ -1,8 +1,11 @@
-'use strict'
+"use strict";
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
+
+const User = use("App/Models/User");
+const Address = use("App/Models/Address");
 
 /**
  * Resourceful controller for interacting with addresses
@@ -17,8 +20,7 @@ class AddressController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
-  }
+  async index({ request, response, view }) {}
 
   /**
    * Render a form to be used for creating a new address.
@@ -29,7 +31,22 @@ class AddressController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async create ({ request, response, view }) {
+  async store({ request, response }) {
+    let { user_id } = request.params;
+    const data = request.only([
+      "street",
+      "zipcode",
+      "neighborhood",
+      "number",
+      "complement",
+      "city",
+      "country",
+    ]);
+    const user = await User.find(user_id);
+
+    const address = await user.addresses().create(data);
+    console.log(address);
+    return response.send(address);
   }
 
   /**
@@ -40,8 +57,6 @@ class AddressController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
-  }
 
   /**
    * Display a single address.
@@ -52,8 +67,7 @@ class AddressController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show ({ params, request, response, view }) {
-  }
+  async show({ params, request, response, view }) {}
 
   /**
    * Render a form to update an existing address.
@@ -64,8 +78,7 @@ class AddressController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async edit ({ params, request, response, view }) {
-  }
+  async edit({ params, request, response, view }) {}
 
   /**
    * Update address details.
@@ -75,8 +88,7 @@ class AddressController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update ({ params, request, response }) {
-  }
+  async update({ params, request, response }) {}
 
   /**
    * Delete a address with id.
@@ -86,8 +98,7 @@ class AddressController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, request, response }) {
-  }
+  async destroy({ params, request, response }) {}
 }
 
-module.exports = AddressController
+module.exports = AddressController;
