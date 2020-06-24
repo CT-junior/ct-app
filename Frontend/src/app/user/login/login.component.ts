@@ -58,18 +58,19 @@ export class LoginComponent implements OnInit {
 
   fazerLogin() {
     if (this.login.valid) {
+    console.log ('TESTE 1 VALID');
       this.authService.fazerLogin(this.login.value).subscribe(
         success => {
           if (success) {
-            this.router.navigate(['/Dashboard']);
             console.log(success);
             this.login.reset();
+            this.router.navigate(['/Dashboard']);
             this.alertService.showAlertSuccess('Login realizado com sucesso!');
           }
         })
     } else {
-      this.login.reset();
-      this.alertService.showAlertSuccess('Campo Usuario ou Senha: Inválido!');
+      console.log ('TESTE 1 INVALID');
+      this.alertService.showAlertDanger('Campo Usuario ou Senha: Inválido!');
       Object.keys(this.login.controls).forEach(campo => {
         const controle = this.login.get(campo);
         controle.markAsTouched();

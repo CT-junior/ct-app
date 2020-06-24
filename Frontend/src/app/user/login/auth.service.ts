@@ -57,6 +57,7 @@ export class AuthService {
   */
 
   fazerLogin(login: User): Observable<boolean> {
+    console.log ('TESTE 2');
     return this.http.post<any>(this.API, login)
       .pipe(
         tap(token => this.doLoginUser(login.email, token)),
@@ -67,28 +68,29 @@ export class AuthService {
   }
 
   private doLoginUser(email: string, token: Token) {
+    console.log ('TESTE 3');
     this.loggedUser = email;
     this.storeTokens(token);
-    this.mostrarMenuEmitter.emit(true);
   }
 
   private storeTokens(token: Token) {
+    console.log ('TESTE 4');
     localStorage.setItem(this.JWT_TOKEN, token.token);
   }
 
   isLoggedIn() {
-    this.mostrarMenuEmitter.emit(false);
-    return this.getJwtToken(), this.usuarioAutenticado;
+    console.log ('TESTE 5');
+    this.mostrarMenuEmitter.emit(true);
+    return !!this.getJwtToken();
   }
 
   getJwtToken() {
-    this.mostrarMenuEmitter.emit(true);
+    console.log ('TESTE 6');
     return localStorage.getItem(this.JWT_TOKEN);
   }
 
   usuarioEstaAutenticado() {
+    console.log ('TESTE 7');
     return this.usuarioAutenticado;
   }
-
-
 }

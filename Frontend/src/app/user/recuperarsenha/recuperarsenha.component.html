@@ -1,0 +1,18 @@
+<h4 class="card-title text-center">Esqueci minha senha!</h4>
+<h6 class="text-center">Receba uma senha provisória pelo seu email:</h6>
+
+<form [formGroup]="form">
+    <div class="row justify-content-center">
+        <div class="form-group col-md-6 px-2">
+            <label for="email">Email:*</label>
+            <input type="text" class="form-control shadow rounde" id="email" placeholder="nome@ctjunior.com.br"
+                formControlName="email" [ngClass]="aplicaCss('email')">
+            <div class="invalid-feedback">Email é
+                obrigatório!</div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center px-2">
+        <button type="button" class="btn btn-outline-secondary col-md-6" (click)="EsqueciMinhaSenha()">Enviar</button>
+    </div>
+</form>

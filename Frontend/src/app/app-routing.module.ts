@@ -8,6 +8,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao
 import { NavbarComponent } from './navbar/navbar.component';
 import { AuthGuard } from './guards/auth.guard';
 import { UserComponent } from './user/user.component';
+import { RecuperarsenhaComponent } from './user/recuperarsenha/recuperarsenha.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'Cadastro', component: UserComponent,
     children: [{ path: '', component: CadastroComponent }]
+  },
+  {
+    path: 'EsqueciMinhaSenha', component: UserComponent,
+    children: [{ path: '', component: RecuperarsenhaComponent }]
   },
   { path: 'Dashboard', component:  DashboardComponent, canActivate: [AuthGuard]},
   { path: '', pathMatch: 'full', redirectTo: 'Login' },
@@ -28,4 +33,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [CadastroComponent, LoginComponent, DashboardComponent, NavbarComponent, PaginaNaoEncontradaComponent]
+export const routingComponents = [CadastroComponent, LoginComponent, RecuperarsenhaComponent, DashboardComponent, NavbarComponent, PaginaNaoEncontradaComponent]
