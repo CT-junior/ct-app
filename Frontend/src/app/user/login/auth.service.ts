@@ -20,6 +20,8 @@ export class AuthService {
 
   private usuarioAutenticado: boolean = false;
   private readonly JWT_TOKEN = 'JWT_TOKEN';
+  private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
+
   private loggedUser: string;
 
   mostrarMenuEmitter = new EventEmitter<boolean>();
@@ -67,16 +69,49 @@ export class AuthService {
         }));
   }
 
+  /* fazerLogout() {
+    return this.http.post<any>('this.API, logout', {
+      'refreshToken': this.getRefreshToken()
+    }).pipe(
+      tap(() => this.doLogoutUser()),
+      mapTo(true),
+      catchError(error => {
+        alert(error.error);
+        return of(false);
+      }));
+  } */
+
+  fazerLogout() {
+    this.getRefreshToken();
+    this.doLogoutUser();
+  }
+
   private doLoginUser(email: string, token: Token) {
     console.log ('TESTE 3');
     this.loggedUser = email;
     this.storeTokens(token);
   }
 
+  private doLogoutUser() {
+    this.loggedUser = null;
+    this.removeTokens();
+    this.mostrarMenuEmitter.emit(false);
+    this.router.navigate(['/Login']);
+  }
+
+  private getRefreshToken() {
+    return localStorage.getItem(this.REFRESH_TOKEN);
+  }
+
   private storeTokens(token: Token) {
     console.log ('TESTE 4');
     localStorage.setItem(this.JWT_TOKEN, token.token);
+    localStorage.setItem(this.REFRESH_TOKEN, token.refreshToken);
   }
+
+  /* private storeJwtToken(token: string) {
+    localStorage.setItem(this.JWT_TOKEN, token);
+  } */
 
   isLoggedIn() {
     console.log ('TESTE 5');
@@ -84,9 +119,22 @@ export class AuthService {
     return !!this.getJwtToken();
   }
 
+  /* refreshToken() {
+    return this.http.post<any>('this.API, refresh', {
+      'refreshToken': this.getRefreshToken()
+    }).pipe(tap((token: Token) => {
+      this.storeJwtToken(token.token);
+    }));
+  } */
+
   getJwtToken() {
     console.log ('TESTE 6');
     return localStorage.getItem(this.JWT_TOKEN);
+  }
+
+  private removeTokens() {
+    localStorage.removeItem(this.JWT_TOKEN);
+    localStorage.removeItem(this.REFRESH_TOKEN);
   }
 
   usuarioEstaAutenticado() {
