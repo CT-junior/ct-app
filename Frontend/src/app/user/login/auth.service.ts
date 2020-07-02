@@ -84,6 +84,7 @@ export class AuthService {
   fazerLogout() {
     this.getRefreshToken();
     this.doLogoutUser();
+    console.log ('TESTE Logout1');
   }
 
   private doLoginUser(email: string, token: Token) {
@@ -96,6 +97,7 @@ export class AuthService {
     this.loggedUser = null;
     this.removeTokens();
     this.mostrarMenuEmitter.emit(false);
+    console.log ('TESTE Logout2');
     this.router.navigate(['/Login']);
   }
 
@@ -116,6 +118,12 @@ export class AuthService {
   isLoggedIn() {
     console.log ('TESTE 5');
     this.mostrarMenuEmitter.emit(true);
+    return !!this.getJwtToken();
+  }
+
+  isNotLoggedIn() {
+    console.log ('TESTE 8');
+    this.mostrarMenuEmitter.emit(false);
     return !!this.getJwtToken();
   }
 
