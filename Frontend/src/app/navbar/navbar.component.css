@@ -9,6 +9,30 @@ nav {
     color: #fff;
 }
 
+.toggle {
+    height: 35px;
+    width: auto;
+    background-color: transparent;
+}
+
+.btn:visited {
+    border:none!important;
+    margin: 0;
+    outline-offset: 0px;
+}
+.btn:hover{
+    border:none!important;
+    margin: 0;
+    outline-offset: 0px;
+}
+
+.toggle-btn {
+    padding: 0px 0px 5px 0px;
+    border: 0;
+    margin: 0;
+    background-color: transparent;
+}
+
 .navbar-brand {
     color: #fff;
 }

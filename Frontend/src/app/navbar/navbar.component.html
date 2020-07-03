@@ -1,8 +1,8 @@
 <div class="teste">
     <nav class="navbar navbar-light bg-light shadow rounde fixed-top">
         <div>
-            <button type="button" class="navbar-toggler" (click)="toggleSidebar()">
-                <span class="navbar-toggler-icon"></span>
+            <button type="button" class="btn toggle-btn" (click)="toggleSidebar()">
+                <img class="toggle" src="../../assets/icons/toggle-nav.png" alt="">
             </button>
 
             <a class="navbar-brand px-4">CT Junior</a>
@@ -12,9 +12,7 @@
     </nav>
 
     <ng-sidebar-container>
-
-        <!-- A sidebar -->
-        <ng-sidebar [(opened)]="opened" position="left">
+        <ng-sidebar [(opened)]="opened" position="left" showBackdrop="true" closeOnClickBackdrop="true">
             <div class="sidebar-itens">
                 <button type="button" class="btn sidebar-item">Dashboard</button>
                 <button type="button" class="btn sidebar-item">Login</button>
@@ -25,5 +23,9 @@
                 <button type="button" class="btn sidebar-item">Teste</button>
             </div>
         </ng-sidebar>
+
+        <!-- <div ng-sidebar-content>
+            <app-dashboard></app-dashboard>
+        </div> -->
     </ng-sidebar-container>
 </div>

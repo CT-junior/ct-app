@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ import { AlertModalService } from 'src/app/alert-modal/alert-modal.service';
 })
 export class LoginComponent implements OnInit {
 
-  login: FormGroup;
+  @Input() login: FormGroup;
   tipo: boolean;
 
   usuario: User = new User();
