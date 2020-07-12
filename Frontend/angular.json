@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ct-app"
+    }
+  },
+  "defaultProject": "ct-app",
+  "cli": {
+    "analytics": false
+  }
 }

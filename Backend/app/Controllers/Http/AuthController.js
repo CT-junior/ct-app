@@ -1,25 +1,25 @@
-"use strict";
+'use strict';
 
-const User = use("App/Models/User");
-const Address = use("App/Models/Address");
+const User = use('App/Models/User');
+const Address = use('App/Models/Address');
 
 class AuthController {
   async register({ request }) {
     const data = request.only([
-      "name",
-      "email",
-      "phone",
-      "role",
-      "team",
-      "birthdate",
-      "password",
+      'name',
+      'email',
+      'phone',
+      'role',
+      'team',
+      'birthdate',
+      'password',
     ]);
     const user = User.create(data);
 
     return user;
   }
 
-  async authenticate({ request, auth, response }) {
+  async authenticate({ request, auth }) {
     const { email, password } = request.all();
 
     const token = await auth.withRefreshToken().attempt(email, password);
