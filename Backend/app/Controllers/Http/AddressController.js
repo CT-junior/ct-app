@@ -32,11 +32,11 @@ class AddressController {
    * @param {View} ctx.view
    */
   async store({ request, response }) {
-    let { user_id } = request.params;
+    const { user_id } = request.params;
     const data = request.only([
       "street",
       "zipcode",
-      "neighborhood",
+      "neighborhood", 
       "number",
       "complement",
       "city",
@@ -45,7 +45,7 @@ class AddressController {
     const user = await User.find(user_id);
 
     const address = await user.addresses().create(data);
-    console.log(address);
+    
     return response.send(address);
   }
 

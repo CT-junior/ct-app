@@ -1,7 +1,7 @@
 'use strict'
 
-const Post = require('../../Models/Post')
-
+const Post = use("App/Models/Post");
+const User = use("App/Models/User");
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -19,7 +19,8 @@ class PostController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
+  async index ({ response }) {
+    return response.send(await Post.all())
   }
 
   /**
@@ -43,6 +44,13 @@ class PostController {
    * @param {Response} ctx.response
    */
   async store ({ request, response }) {
+    const { user_id } = request.params;
+    const data = request.only(["content"]);
+    const user = await User.find(user_id);
+
+    const post = await user.posts().create(data);
+    
+    return response.send(post);
   }
 
   /**
@@ -55,15 +63,6 @@ class PostController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
-    const post = await Post.findOrFail(params.id)
-
-    /** 
-    const post = await Post.query()
-      .with("postAnswers") 
-      .fatch()
-    */
-
-    return post;
   }
 
   /**

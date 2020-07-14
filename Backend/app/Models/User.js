@@ -38,6 +38,11 @@ class User extends Model {
   addresses() {
     return this.hasOne("App/Models/Address");
   }
-}
 
+
+
+ posts() {
+    return this.hasMany("App/Models/Post");
+  }
+} 
 module.exports = User;

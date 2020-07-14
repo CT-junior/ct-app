@@ -29,26 +29,6 @@ class AuthController {
     return token;
   }
 
-  async authenticate_refresh({request, auth}) {
-
-    /** Revoking Token */ 
-    /** Could be UserController.revokeUserToken ({ auth }) ???*/
-    const user = auth.current.user
-    const token = auth.getAuthHeader()
-
-    const refreshToken = request.input('refresh_token');
-
-    await user
-      .tokens()
-      .where('token', token)
-      .update({ is_revoked: true })
-    
-    /** Creating other token */
-    
-    const token2 = await auth.newRefreshToken().generateForRefreshToken(refreshToken);
-
-    return token2;
-  }
 }
 
 module.exports = AuthController;

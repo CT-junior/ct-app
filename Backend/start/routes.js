@@ -1,7 +1,7 @@
 "use strict";
 
 const AddressController = require("../app/Controllers/Http/AddressController");
-const { route } = require("@adonisjs/framework/src/Route/Manager");
+const { route, RouteGroup } = require("@adonisjs/framework/src/Route/Manager");
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +22,15 @@ Route.get("/list", "UserController.show");
 
 Route.post("/register", "AuthController.register");
 Route.post("/authenticate", "AuthController.authenticate");
-Route.post("/:user_id/refresh", "AuthController.authenticate_refresh").middleware(["auth"]);
 
 Route.post("/:user_id/logout", "UserController.revokeUserToken").middleware(["auth"]);
 Route.post("/addresses/:user_id", "AddressController.store");
 
-Route.get("/app", "UserController.index").middleware(["auth"]);
+Route.get("/app", "UserController.index").middleware(["auth"]); 
+
+Route.post("/posts/:user_id", "PostController.store");
+Route.get("/Posts","PostController.index");  
+
+Route.get("/MyPosts/","UserController.myPosts").middleware(["auth"]);  
+
+Route.get("/", ()=> "Olá terceiro!")

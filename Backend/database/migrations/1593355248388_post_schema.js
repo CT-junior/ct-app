@@ -8,14 +8,14 @@ class PostSchema extends Schema {
     this.create('posts', (table) => {
       table.increments()
       table
-        .integer('user_id')
+        .integer("user_id")
         .unsigned()
         .notNullable()
-        .references('id')
-        .inTable('users')
-        .onUpdate('CASCADE')
-        .onDelete('CASCADE')
-      table.string('content').notNullable()
+        .references("id")
+        .inTable("users")
+        .onUpdate("CASCADE")
+        .onDelete("CASCADE");
+      table.string("content").notNullable().unique()
       table.timestamps()
     })
   }
