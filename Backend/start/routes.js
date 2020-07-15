@@ -18,19 +18,30 @@ const { route, RouteGroup } = require("@adonisjs/framework/src/Route/Manager");
 
 const Route = use("Route");
 
-Route.get("/list", "UserController.show");
+/**Routes for get any information of user needing autentication*/
+Route.group(()=>{
+    Route.get("","UserController.show"); /** Show an unique user */
+    Route.get("MyPosts","UserController.myPosts"); /** Show all posts of an unique user */
+    Route.get("address", "UserController.myAddress"); /** Show an address of an unique user */
+}).prefix("user").middleware(['auth']);
 
-Route.post("/register", "AuthController.register");
-Route.post("/authenticate", "AuthController.authenticate");
+/** Routes using UserController */
+Route.get("/list", "UserController.index").middleware(["auth"]); /** Show all users */
+Route.get("/list/addresses", "UserController.list_adrress").middleware(["auth"]); /** Show all users with each address */
+Route.get("/:user_id/address", "UserController.address").middleware(["auth"]); /** Show an address of an expecific user */
 
-Route.post("/:user_id/logout", "UserController.revokeUserToken").middleware(["auth"]);
-Route.post("/addresses/:user_id", "AddressController.store");
+/** Routes using AuthController */
+Route.post("/register", "AuthController.register"); /** Register an user in the back */
+Route.post("/authenticate", "AuthController.authenticate"); /** Creat a token to user */
 
-Route.get("/app", "UserController.index").middleware(["auth"]); 
+/** Routes using AddressController */
+Route.post("/addresses/:user_id", "AddressController.store"); /** Create an address */
+Route.get("/addresses", "AddressController.index"); /** Show all addresses */
 
-Route.post("/posts/:user_id", "PostController.store");
-Route.get("/Posts","PostController.index");  
+/** Routes using PostController */
+Route.post("/posts", "PostController.store").middleware(["auth"]); /** Create a post */
+Route.get("/Posts","PostController.index");  /** Show all posts */
 
-Route.get("/MyPosts/","UserController.myPosts").middleware(["auth"]);  
-
+/** Other routes */
 Route.get("/", ()=> "Olá terceiro!")
+Route.get("/app", "UserController.home").middleware(["auth"]); 

@@ -20,7 +20,11 @@ class AddressController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index({ request, response, view }) {}
+  async index({ request, response, view }) {
+    const address = await Address.all(); // Return user with address
+
+    return address;
+  }
 
   /**
    * Render a form to be used for creating a new address.
