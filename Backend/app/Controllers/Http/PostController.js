@@ -65,7 +65,7 @@ class PostController {
   }
 
   /**
-   * Render a form to update an existing post.
+   * Render a post.
    * GET posts/:id/edit
    *
    * @param {object} ctx
@@ -73,7 +73,12 @@ class PostController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async edit ({ params, request, response, view }) {
+  async show ({ params, response }) {
+    const post = await Post.findOrFail(params.id)
+    
+    return response.send(post)
+  
+  
   }
 
   /**
@@ -84,7 +89,18 @@ class PostController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update ({ params, request, response }) {
+  async update ({ params, request, response,auth }) {
+    const data = request.only(["content"]);
+    const post = await Post.findOrFail(params.id);
+   
+   
+    if(post.user_id ==! auth.user.id) {
+      return response.status(401);
+    }
+    post.content = data['content'];
+    post.save();
+    
+    return response.send(post);  
   }
 
   /**
@@ -97,7 +113,8 @@ class PostController {
    */
   async destroy ({ params, auth, response }) {
     const post = await Post.findOrFail(params.id);
-
+    console.log(auth.user.id)
+    
     if(post.user_id ==! auth.user.id) {
       return response.status(401);
     }
