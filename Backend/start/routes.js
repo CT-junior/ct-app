@@ -66,8 +66,14 @@ Route.get('/addresses', 'AddressController.index'); /** Show all addresses */
 Route.post('/posts', 'PostController.store').middleware([
   'auth',
 ]); /** Create a post */
-Route.get('/Posts', 'PostController.index'); /** Show all posts */
+Route.post*("/createPost", "PostController.store")*.middleware*(["auth"]); /** Create a post */
+Route.post*("/editPost/:id", "PostController.update")*.middleware*(["auth"]); /** Edit the content of a already existing post */
+Route.get*("/posts","PostController.index"); /** *Show all posts */
+Route.get*("/getPost/:id","PostController.show") /**Show a specific post */
+Route.delete("/deletePost/:id","PostController.destroy").middleware*(["auth"])
 
-/** Other routes */
-Route.get('/', () => 'Olá terceiro!');
-Route.get('/app', 'UserController.home').middleware(['auth']);
+/** *Other routes */
+
+Route.get("/", ()=> "Olá, terceiro!")
+
+Route.get("/app", "UserController.home")*.middleware*(["auth"]);
