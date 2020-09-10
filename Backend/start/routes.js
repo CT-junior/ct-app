@@ -67,10 +67,10 @@ Route.get('/addresses', 'AddressController.index'); /** Show all addresses */
 
 /** Routes using PostController */
 
-Route.post*("/createPost", "PostController.store").middleware(["auth"]); /** Create a post */
-Route.post*("/editPost/:id", "PostController.update").middleware(["auth"]); /** Edit the content of a already existing post */
-Route.get*("/posts","PostController.index"); /** *Show all posts */
-Route.get*("/getPost/:id","PostController.show") /**Show a specific post */
+Route.post("/createPost", "PostController.store").middleware(["auth"]); /** Create a post */
+Route.post("/editPost/:id", "PostController.update").middleware(["auth"]); /** Edit the content of a already existing post */
+Route.get("/posts","PostController.index"); /** *Show all posts */
+Route.get("/getPost/:id","PostController.show") /**Show a specific post */
 Route.delete("/deletePost/:id","PostController.destroy").middleware(["auth"])
 
 /** *Other routes */
