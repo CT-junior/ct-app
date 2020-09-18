@@ -2,6 +2,7 @@
 
 const Post = use("App/Models/Post");
 const User = use("App/Models/User");
+
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -61,8 +62,6 @@ class PostController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show ({ params, request, response, view }) {
-  }
 
   /**
    * Render a post.
@@ -102,15 +101,23 @@ class PostController {
     
     return response.send(post);  
   }
-
-  /**
-   * Delete a post with id.
+/**
+   * Show all posts from a specific user.
    * DELETE posts/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
+
+  async postsFromUser({params,response,request}){ 
+    const data = params.id
+    const user = await User.find(data)
+    const posts = await user.posts().fetch()
+      return response.send(posts)
+  }
+
+  
   async destroy ({ params, auth, response }) {
     const post = await Post.findOrFail(params.id);
     console.log(auth.user.id)

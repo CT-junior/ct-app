@@ -7,6 +7,7 @@ class Post extends Model {
     postAnswers(){
         return this.hasMany("App/Model/PostAnswer");
     }
+    
 }
 
 module.exports = Post

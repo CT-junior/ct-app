@@ -1,4 +1,7 @@
 'use strict'
+const Post = use("App/Models/Post");
+const PostAnswer = use("App/Models/PostAnswer");
+const User = use("App/Models/User");
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -29,7 +32,15 @@ class PostAnswerController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async create ({ request, response, view }) {
+  async create ({ request, response, auth }) {
+    const data =  request.only(["content","post_id"]);
+    data['user_id'] = await auth.user.id ;
+  
+    //const post = await Post.find(data['post_id']); 
+
+    const postAnswer = await PostAnswer.create(data);
+    
+    return response.send(postAnswer);
   }
 
   /**
@@ -52,8 +63,12 @@ class PostAnswerController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show ({ params, request, response, view }) {
+  async show ({ params, response}) {
+    const answer = await PostAnswer.findOrFail(params.id)
+    
+    return response.send(answer)
   }
+  
 
   /**
    * Render a form to update an existing postanswer.
@@ -75,7 +90,33 @@ class PostAnswerController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update ({ params, request, response }) {
+  async update ({ params, request, response, auth }) {
+    const data = request.only(["content"]);
+    const answer = await PostAnswer.findOrFail(params.id);
+   
+   
+    if(answer.user_id ==! auth.user.id) {
+      return response.status(401);
+    }
+    answer.content = data['content'];
+    answer.save();
+    
+    return response.send(answer);  
+  }
+  /**
+   * Show all posts from a specific user.
+   * DELETE posts/:id
+   *
+   * @param {object} ctx
+   * @param {Request} ctx.request
+   * @param {Response} ctx.response
+   */
+
+  async answersFromPost({params,response}){ 
+    const data = params.id
+    const post = await Post.find(data)
+    const answers = await post.postAnswers().fetch()
+      return response.send(answers)
   }
 
   /**
@@ -86,7 +127,15 @@ class PostAnswerController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, request, response }) {
+  async destroy ({ params, response, auth }) {
+    const answer = await PostAnswer.findOrFail(params.id);
+    console.log(auth.user.id)
+    
+    if(answer.user_id ==! auth.user.id) {
+      return response.status(401);
+    }
+
+    return answer.delete()
   }
 }
 
