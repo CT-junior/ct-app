@@ -14,6 +14,7 @@ class UserSchema extends Schema {
       table.string("team", 15).notNullable();
       table.string("birthdate", 12).notNullable();
       table.string("password", 60).notNullable();
+      table.string("profile_pic",60); 
       table.timestamps();
     });
   }
