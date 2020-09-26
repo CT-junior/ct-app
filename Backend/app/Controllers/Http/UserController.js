@@ -1,7 +1,7 @@
 'use strict';
 
 const AddressController = require('./AddressController');
-
+const Helpers = use('Helpers')
 const User = use('App/Models/User');
 const Token = use('App/Models/Token');
 const Address = use('App/Models/Address');
@@ -64,6 +64,26 @@ class UserController {
     }
 
     await user.delete();
+  }
+
+  async uploadImg({params, request},direct){ 
+    const profilePic = request.file('profile_pic', {
+      types: ['image'],
+      size: '2mb'
+    })
+  
+    await profilePic.move(Helpers.tmpPath(direct), {
+      name: 'imagem.jpg',
+      overwrite: true
+    })
+  
+    if (!profilePic.moved()) {
+      return profilePic.error()
+    }
+    return 'File moved'
+
+
+
   }
 }
 

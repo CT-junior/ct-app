@@ -88,3 +88,6 @@ Route.delete("/deletePost/:id","PostAnswerController.destroy").middleware(["auth
 Route.get("/", ()=> "Olá, terceiro!")
 
 Route.get("/app", "UserController.home").middleware(["auth"]);
+
+Route.post("/uploadImg", "UserController.uploadImg")
+

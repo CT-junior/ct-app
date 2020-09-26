@@ -15,7 +15,7 @@ class AuthController {
       "password",
     ]);
     const user = User.create(data);
-
+    user.uploadImg()
     return user;
   }
 
