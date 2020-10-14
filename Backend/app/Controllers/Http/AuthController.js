@@ -1,7 +1,6 @@
 'use strict';
 
 const User = use('App/Models/User');
-const Address = use('App/Models/Address');
 
 class AuthController {
   async register({ request }) {
@@ -19,7 +18,7 @@ class AuthController {
     return user;
   }
 
-  async authenticate({ request, auth }) {
+  async authenticate({ request, auth, response }) {
     const { email, password } = request.all();
 
     const token = await auth.withRefreshToken().attempt(email, password);

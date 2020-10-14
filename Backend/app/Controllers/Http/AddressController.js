@@ -20,7 +20,11 @@ class AddressController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index({ request, response, view }) {}
+  async index({ request, response, view }) {
+    const address = await Address.all(); // Return user with address
+
+    return address;
+  }
 
   /**
    * Render a form to be used for creating a new address.
@@ -32,11 +36,11 @@ class AddressController {
    * @param {View} ctx.view
    */
   async store({ request, response }) {
-    let { user_id } = request.params;
+    const { user_id } = request.params;
     const data = request.only([
       "street",
       "zipcode",
-      "neighborhood",
+      "neighborhood", 
       "number",
       "complement",
       "city",
@@ -45,7 +49,7 @@ class AddressController {
     const user = await User.find(user_id);
 
     const address = await user.addresses().create(data);
-    console.log(address);
+    
     return response.send(address);
   }
 
