@@ -1,12 +1,12 @@
-'use strict'
+'use strict';
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
-const Schema = use('Schema')
+const Schema = use('Schema');
 
 class PostAnswerSchema extends Schema {
-  up () {
+  up() {
     this.create('post_answers', (table) => {
-      table.increments()
+      table.increments();
       table
         .integer('user_id')
         .unsigned()
@@ -14,7 +14,7 @@ class PostAnswerSchema extends Schema {
         .references('id')
         .inTable('users')
         .onUpdate('CASCADE')
-        .onDelete('CASCADE')
+        .onDelete('CASCADE');
       table
         .integer('post_id')
         .unsigned()
@@ -22,15 +22,15 @@ class PostAnswerSchema extends Schema {
         .references('id')
         .inTable('posts')
         .onUpdate('CASCADE')
-        .onDelete('CASCADE')
-      table.string('content').notNullable()
-      table.timestamps()
-    })
+        .onDelete('CASCADE');
+      table.string('content').notNullable();
+      table.timestamps();
+    });
   }
 
-  down () {
-    this.drop('post_answers')
+  down() {
+    this.drop('post_answers');
   }
 }
 
-module.exports = PostAnswerSchema
+module.exports = PostAnswerSchema;

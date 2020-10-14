@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
-const User = use("App/Models/User");
-const Address = use("App/Models/Address");
+const User = use('App/Models/User');
+const Address = use('App/Models/Address');
 
 /**
  * Resourceful controller for interacting with addresses
@@ -38,18 +38,18 @@ class AddressController {
   async store({ request, response }) {
     const { user_id } = request.params;
     const data = request.only([
-      "street",
-      "zipcode",
-      "neighborhood", 
-      "number",
-      "complement",
-      "city",
-      "country",
+      'street',
+      'zipcode',
+      'neighborhood',
+      'number',
+      'complement',
+      'city',
+      'country',
     ]);
     const user = await User.find(user_id);
 
     const address = await user.addresses().create(data);
-    
+
     return response.send(address);
   }
 
